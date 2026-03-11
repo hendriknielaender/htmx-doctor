@@ -1,4 +1,4 @@
 {
-  "plugins": ["typescript", "react", "import"],
+  "plugins": ["typescript", "import"],
   "rules": {}
 }
