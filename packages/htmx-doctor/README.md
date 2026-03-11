@@ -122,7 +122,7 @@ console.log(result.project);
 ## Contributing
 
 ```bash
-git clone https://github.com/millionco/htmx-doctor
+git clone https://github.com/hendriknielaender/htmx-doctor
 cd htmx-doctor
 bun install
 bun run build
