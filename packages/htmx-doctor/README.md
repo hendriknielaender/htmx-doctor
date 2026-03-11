@@ -61,7 +61,7 @@ Supports Cursor, Claude Code, Amp Code, Codex, Gemini CLI, OpenCode, Windsurf, a
 - uses: actions/checkout@v5
   with:
     fetch-depth: 0
-- uses: millionco/htmx-doctor@main
+- uses: hendriknielaender/htmx-doctor@main
   with:
     diff: main
     github-token: ${{ secrets.GITHUB_TOKEN }}
