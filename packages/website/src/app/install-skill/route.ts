@@ -11,24 +11,24 @@ else
   RESET=''
 fi
 
-SKILL_NAME="react-doctor"
+SKILL_NAME="htmx-doctor"
 INSTALLED=0
 
 SKILL_CONTENT=$(cat << 'EOF'
 ---
-name: react-doctor
-description: Run after making React changes to catch issues early. Use when reviewing code, finishing a feature, or fixing bugs in a React project.
+name: htmx-doctor
+description: Run after making HTMX changes to catch request, swap, and markup issues early.
 version: 1.0.0
 ---
 
-# React Doctor
+# HTMX Doctor
 
-Scans your React codebase for security, performance, correctness, and architecture issues. Outputs a 0-100 score with actionable diagnostics.
+Scans HTMX templates and scripts for security, performance, correctness, and accessibility issues. Outputs a 0-100 score with actionable diagnostics.
 
 ## Usage
 
 \\\`\\\`\\\`bash
-npx -y react-doctor@latest . --verbose --diff
+npx -y htmx-doctor@latest . --verbose --diff
 \\\`\\\`\\\`
 
 ## Workflow
@@ -38,16 +38,16 @@ EOF
 )
 
 AGENTS_CONTENT=$(cat << 'EOF'
-# React Doctor
+# HTMX Doctor
 
-Run after making React changes to catch issues early. Use when reviewing code, finishing a feature, or fixing bugs in a React project.
+Run after making HTMX changes to catch request, swap, and markup issues early.
 
-Scans your React codebase for security, performance, correctness, and architecture issues. Outputs a 0-100 score with actionable diagnostics.
+Scans HTMX templates and scripts for security, performance, correctness, and accessibility issues. Outputs a 0-100 score with actionable diagnostics.
 
 ## Usage
 
 \\\`\\\`\\\`bash
-npx -y react-doctor@latest . --verbose --diff
+npx -y htmx-doctor@latest . --verbose --diff
 \\\`\\\`\\\`
 
 ## Workflow
@@ -56,7 +56,7 @@ Run after making changes to catch issues early. Fix errors first, then re-run to
 EOF
 )
 
-echo "Installing React Doctor skill..."
+echo "Installing HTMX Doctor skill..."
 echo ""
 
 # Claude Code
@@ -100,7 +100,7 @@ if command -v opencode &> /dev/null || [ -d "$HOME/.config/opencode" ]; then
 fi
 
 # Windsurf
-MARKER="# React Doctor"
+MARKER="# HTMX Doctor"
 if [ -d "$HOME/.codeium" ] || [ -d "$HOME/Library/Application Support/Windsurf" ]; then
   mkdir -p "$HOME/.codeium/windsurf/memories"
   RULES_FILE="$HOME/.codeium/windsurf/memories/global_rules.md"
@@ -146,8 +146,8 @@ if command -v codex &> /dev/null || [ -d "$HOME/.codex" ]; then
   printf '%s\\n' "$AGENTS_CONTENT" > "$SKILL_DIR/AGENTS.md"
   cat > "$SKILL_DIR/agents/openai.yaml" << 'YAMLEOF'
 interface:
-  display_name: "react-doctor"
-  short_description: "Diagnose and fix React codebase health issues"
+  display_name: "htmx-doctor"
+  short_description: "Diagnose and fix HTMX codebase health issues"
 YAMLEOF
   printf "\${GREEN}✔\${RESET} Codex\\n"
   INSTALLED=$((INSTALLED + 1))
@@ -178,7 +178,7 @@ if [ $INSTALLED -eq 0 ]; then
   exit 1
 fi
 
-echo "Done! The skill will activate when working on React projects."
+echo "Done! The skill will activate when working on HTMX projects."
 `;
 
 export const GET = (): Response =>

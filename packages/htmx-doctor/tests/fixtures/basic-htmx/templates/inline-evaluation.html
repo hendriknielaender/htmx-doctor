@@ -1,0 +1,7 @@
+<button
+  hx-get="/preview"
+  hx-vals='js:{token: window.localStorage.getItem("token")}'
+  hx-on:click="window.alert('preview')"
+>
+  Preview
+</button>

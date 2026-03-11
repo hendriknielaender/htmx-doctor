@@ -5,9 +5,9 @@ import BadgeSnippet from "./badge-snippet";
 const PERFECT_SCORE = 100;
 const SCORE_GOOD_THRESHOLD = 75;
 const SCORE_OK_THRESHOLD = 50;
-const COMMAND = "npx -y react-doctor@latest .";
-const FIX_COMMAND = "npx -y react-doctor@latest . --fix";
-const SHARE_BASE_URL = "https://www.react.doctor/share";
+const COMMAND = "npx -y htmx-doctor@latest .";
+const FIX_COMMAND = "npx -y htmx-doctor@latest . --fix";
+const SHARE_BASE_URL = "https://www.htmx.doctor/share";
 const X_ICON_PATH =
   "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z";
 const LINKEDIN_ICON_PATH =
@@ -65,15 +65,15 @@ export const generateMetadata = async ({
   const label = getScoreLabel(score);
 
   const titlePrefix = projectName ? `${projectName} - ` : "";
-  const title = `React Doctor - ${titlePrefix}Score: ${score}/100 (${label})`;
+  const title = `HTMX Doctor - ${titlePrefix}Score: ${score}/100 (${label})`;
   const descriptionParts: string[] = [];
   if (errorCount > 0) descriptionParts.push(`${errorCount} error${errorCount === 1 ? "" : "s"}`);
   if (warningCount > 0)
     descriptionParts.push(`${warningCount} warning${warningCount === 1 ? "" : "s"}`);
   const description =
     descriptionParts.length > 0
-      ? `${descriptionParts.join(", ")} found. Run react-doctor on your codebase to find React issues.`
-      : "Run react-doctor on your codebase to find React issues.";
+      ? `${descriptionParts.join(", ")} found. Run htmx-doctor on your codebase to find HTMX issues.`
+      : "Run htmx-doctor on your codebase to find HTMX issues.";
 
   const ogSearchParams = new URLSearchParams();
   if (resolvedParams.p) ogSearchParams.set("p", resolvedParams.p);
@@ -108,8 +108,8 @@ const SharePage = async ({ searchParams }: { searchParams: Promise<ShareSearchPa
   if (resolvedParams.f) shareSearchParams.set("f", resolvedParams.f);
   const shareUrl = `${SHARE_BASE_URL}?${shareSearchParams.toString()}`;
 
-  const projectLabel = projectName ? `${projectName} ` : "My React codebase ";
-  const tweetText = `${projectLabel}scored ${score}/100 (${label}) on React Doctor. Run it on yours:`;
+  const projectLabel = projectName ? `${projectName} ` : "My HTMX codebase ";
+  const tweetText = `${projectLabel}scored ${score}/100 (${label}) on HTMX Doctor. Run it on yours:`;
   const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(shareUrl)}`;
   const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 
@@ -119,7 +119,7 @@ const SharePage = async ({ searchParams }: { searchParams: Promise<ShareSearchPa
         {projectName && <div className="mb-4 text-xl text-white">{projectName}</div>}
         <DoctorFace score={score} />
         <div className="mt-2 text-neutral-500">
-          React Doctor <span className="text-neutral-600">(www.react.doctor)</span>
+          HTMX Doctor <span className="text-neutral-600">(www.htmx.doctor)</span>
         </div>
       </div>
 

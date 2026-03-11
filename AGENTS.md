@@ -1,6 +1,6 @@
 ## General Rules
 
-- MUST: Use @antfu/ni. Use `ni` to install, `nr SCRIPT_NAME` to run. `nun` to uninstall.
+- MUST: Use Bun. Use `bun install` to install, `bun run SCRIPT_NAME` to run scripts, `bunx` to run binaries, and `bun remove` to uninstall.
 - MUST: Use TypeScript interfaces over types.
 - MUST: Keep all types in the global scope.
 - MUST: Use arrow functions over function declarations
@@ -23,8 +23,8 @@
 Run checks always before committing with:
 
 ```bash
-pnpm test # runs e2e tests
-pnpm lint
-pnpm typecheck # runs type checking
-pnpm format
+bun run test # runs e2e tests
+bun run lint
+bun run typecheck # runs type checking
+bun run format
 ```

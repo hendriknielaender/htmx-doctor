@@ -5,9 +5,8 @@ const SCORE_GOOD_THRESHOLD = 75;
 const SCORE_OK_THRESHOLD = 50;
 const IMAGE_WIDTH_PX = 1200;
 const IMAGE_HEIGHT_PX = 630;
-const OG_BRAND_MARK_WIDTH_PX = 244;
-const OG_BRAND_MARK_HEIGHT_PX = 82;
-const OG_BRAND_MARK_PATH = "/react-doctor-og-banner.svg";
+const BRAND_ICON_SIZE_PX = 42;
+const BRAND_ICON_PATH = "/favicon.png";
 
 const getScoreLabel = (score: number): string => {
   if (score >= SCORE_GOOD_THRESHOLD) return "Great";
@@ -30,7 +29,7 @@ export const GET = (request: Request): ImageResponse => {
   const warningCount = Math.max(0, Number(searchParams.get("w")) || 0);
   const fileCount = Math.max(0, Number(searchParams.get("f")) || 0);
   const scoreColor = getScoreColor(score);
-  const brandMarkUrl = new URL(OG_BRAND_MARK_PATH, request.url).toString();
+  const brandIconUrl = new URL(BRAND_ICON_PATH, request.url).toString();
   const scoreBarPercent = (score / PERFECT_SCORE) * 100;
 
   return new ImageResponse(
@@ -47,7 +46,20 @@ export const GET = (request: Request): ImageResponse => {
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-        <img src={brandMarkUrl} width={OG_BRAND_MARK_WIDTH_PX} height={OG_BRAND_MARK_HEIGHT_PX} />
+        <div
+          style={{
+            width: `${BRAND_ICON_SIZE_PX}px`,
+            height: `${BRAND_ICON_SIZE_PX}px`,
+            backgroundImage: `url(${brandIconUrl})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
+            flexShrink: 0,
+          }}
+        />
+        <div style={{ display: "flex", color: "#f5f5f5", fontSize: "34px", fontWeight: 700 }}>
+          HTMX Doctor
+        </div>
         {projectName && (
           <div
             style={{

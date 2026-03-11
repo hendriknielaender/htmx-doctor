@@ -3,7 +3,7 @@ const SCORE_GOOD_THRESHOLD = 75;
 const SCORE_OK_THRESHOLD = 50;
 
 const BADGE_HEIGHT_PX = 20;
-const LABEL_TEXT = "react doctor";
+const LABEL_TEXT = "htmx doctor";
 const LABEL_RECT_WIDTH_PX = 97;
 const LABEL_TEXT_CENTER_10X = 575;
 const LABEL_TEXT_LENGTH_10X = 670;

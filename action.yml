@@ -1,5 +1,5 @@
-name: "React Doctor"
-description: "Scan React codebases for security, performance, and correctness issues"
+name: "HTMX Doctor"
+description: "Scan HTMX codebases for security, performance, and correctness issues"
 branding:
   icon: "activity"
   color: "blue"
@@ -54,9 +54,9 @@ runs:
         if [ -n "$INPUT_DIFF" ]; then FLAGS="$FLAGS --diff $INPUT_DIFF"; fi
 
         if [ -n "$INPUT_GITHUB_TOKEN" ]; then
-          npx -y react-doctor@latest "$INPUT_DIRECTORY" $FLAGS | tee /tmp/react-doctor-output.txt
+          npx -y htmx-doctor@latest "$INPUT_DIRECTORY" $FLAGS | tee /tmp/htmx-doctor-output.txt
         else
-          npx -y react-doctor@latest "$INPUT_DIRECTORY" $FLAGS
+          npx -y htmx-doctor@latest "$INPUT_DIRECTORY" $FLAGS
         fi
 
     - id: score
@@ -65,7 +65,7 @@ runs:
       env:
         INPUT_DIRECTORY: ${{ inputs.directory }}
       run: |
-        SCORE=$(npx -y react-doctor@latest "$INPUT_DIRECTORY" --score 2>/dev/null | tail -1 | tr -d '[:space:]')
+        SCORE=$(npx -y htmx-doctor@latest "$INPUT_DIRECTORY" --score 2>/dev/null | tail -1 | tr -d '[:space:]')
         if [[ -n "$SCORE" && "$SCORE" =~ ^[0-9]+$ ]]; then
           echo "score=$SCORE" >> "$GITHUB_OUTPUT"
         fi
@@ -76,13 +76,13 @@ runs:
         github-token: ${{ inputs.github-token }}
         script: |
           const fs = require("fs");
-          const path = "/tmp/react-doctor-output.txt";
+          const path = "/tmp/htmx-doctor-output.txt";
           if (!fs.existsSync(path)) return;
           const output = fs.readFileSync(path, "utf8").trim();
           if (!output) return;
 
-          const marker = "<!-- react-doctor -->";
-          const body = `${marker}\n## 🩺 React Doctor\n\n\`\`\`\n${output}\n\`\`\``;
+          const marker = "<!-- htmx-doctor -->";
+          const body = `${marker}\n## 🩺 HTMX Doctor\n\n\`\`\`\n${output}\n\`\`\``;
 
           const { data: comments } = await github.rest.issues.listComments({
             ...context.repo,

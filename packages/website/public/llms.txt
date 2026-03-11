@@ -1,53 +1,53 @@
-# React Doctor
+# HTMX Doctor
 
-Diagnose React codebase health. Scans for security, performance, correctness, and architecture issues, then outputs a 0–100 score with actionable diagnostics.
+Diagnose HTMX codebase health. Scans templates and scripts for security, performance, correctness, and accessibility issues, then outputs a 0-100 score with actionable diagnostics.
 
 ## Usage
 
 Run this at your project root:
 
 ```bash
-npx -y react-doctor@latest .
+npx -y htmx-doctor@latest .
 ```
 
 Use `--verbose` to see affected files and line numbers:
 
 ```bash
-npx -y react-doctor@latest . --verbose
+npx -y htmx-doctor@latest . --verbose
 ```
 
-Use `--diff` to scan only changed files (branch changes or uncommitted changes):
+Use `--diff` to scan only changed files:
 
 ```bash
-npx -y react-doctor@latest . --verbose --diff
+npx -y htmx-doctor@latest . --verbose --diff
 ```
 
 Use `--score` to output only the numeric score:
 
 ```bash
-npx -y react-doctor@latest . --score
+npx -y htmx-doctor@latest . --score
 ```
 
-Use `-y` to skip prompts (required for non-interactive environments like CI or coding agents):
+Use `-y` to skip prompts:
 
 ```bash
-npx -y react-doctor@latest . -y
+npx -y htmx-doctor@latest . -y
 ```
 
 ## Options
 
-```
-Usage: react-doctor [directory] [options]
+```txt
+Usage: htmx-doctor [directory] [options]
 
 Options:
-  -v, --version     display the version number
-  --no-lint         skip linting
-  --no-dead-code    skip dead code detection
-  --verbose         show file details per rule
-  --score           output only the score
-  -y, --yes         skip prompts, scan all workspace projects
-  --project <name>  select workspace project (comma-separated for multiple)
-  --diff [base]     scan only files changed vs base branch or uncommitted changes
-  --fix             open Ami to auto-fix all issues
-  -h, --help        display help for command
+  -v, --version      display the version number
+  --no-lint          skip HTMX checks
+  --no-dead-code     skip dead code detection
+  --verbose          show file details per rule
+  --score            output only the score
+  -y, --yes          skip prompts, scan all workspace projects
+  --project <name>   select workspace project (comma-separated for multiple)
+  --diff [base]      scan only files changed vs base branch or uncommitted changes
+  --fix              open Ami to auto-fix all issues
+  -h, --help         display help for command
 ```

@@ -1,0 +1,8 @@
+{
+  "name": "basic-htmx",
+  "private": true,
+  "dependencies": {
+    "htmx.org": "^2.0.4",
+    "vite": "^7.0.0"
+  }
+}

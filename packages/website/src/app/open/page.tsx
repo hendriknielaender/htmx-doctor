@@ -32,7 +32,7 @@ const OpenPageContent = () => {
         <p className="text-neutral-500">
           {didAttemptOpen
             ? "If Ami didn\u2019t open, it may not be installed."
-            : "Redirecting to Ami to fix react-doctor issues."}
+            : "Redirecting to Ami to fix htmx-doctor issues."}
         </p>
       </div>
 

@@ -1,10 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const COPY_FEEDBACK_DURATION_MS = 2000;
-const BADGE_BASE_URL = "https://www.react.doctor/share/badge";
-const SHARE_BASE_URL = "https://www.react.doctor/share";
+const BADGE_BASE_URL = "https://www.htmx.doctor/share/badge";
+const SHARE_BASE_URL = "https://www.htmx.doctor/share";
 
 interface BadgeSnippetProps {
   searchParamsString: string;
@@ -16,7 +17,7 @@ const BadgeSnippet = ({ searchParamsString }: BadgeSnippetProps) => {
   const badgeFullUrl = `${BADGE_BASE_URL}?${searchParamsString}`;
   const shareFullUrl = `${SHARE_BASE_URL}?${searchParamsString}`;
   const badgePreviewPath = `/share/badge?${searchParamsString}`;
-  const markdownSnippet = `[![React Doctor](${badgeFullUrl})](${shareFullUrl})`;
+  const markdownSnippet = `[![HTMX Doctor](${badgeFullUrl})](${shareFullUrl})`;
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(markdownSnippet);
@@ -28,7 +29,14 @@ const BadgeSnippet = ({ searchParamsString }: BadgeSnippetProps) => {
     <div className="mt-8">
       <div className="text-neutral-500">Add a badge to your README:</div>
       <div className="mt-3 flex flex-wrap items-center gap-3">
-        <img src={badgePreviewPath} alt="React Doctor score badge" height={20} className="block" />
+        <Image
+          src={badgePreviewPath}
+          alt="HTMX Doctor score badge"
+          width={148}
+          height={20}
+          unoptimized
+          className="block"
+        />
         <a
           href={badgePreviewPath}
           target="_blank"
